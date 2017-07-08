@@ -27,21 +27,6 @@ if(isset($_SESSION['name']))
 //if(isset($_POST['upload'])){
 
 
-$folder = 'images/gallery';
-
-$targetfile =  $folder.basename($_FILES['image']['name']);
-
-$extension = pathinfo($targetfile,PATHINFO_EXTENSION);
-
-$imagetitle = $_POST['imagetitle'];
-
-$tempfile = $_FILES['image']['tmp_name'];
-
-$imagesize = $_FILES['image']['size'];
-
-$uploadimage= new User;
-
-$uploadimage->imageupload($imagetitle,$targetfile,$extension,$imagesize,$tempfile);
 //}
 /*else{
   ?>
@@ -78,7 +63,7 @@ $uploadimage->imageupload($imagetitle,$targetfile,$extension,$imagesize,$tempfil
           <div class="col-md-12">
             <div class="card">
               <h3 class="card-title">Image Upload</h3>
-               <form  action='gallery.php' method="POST" onsubmit="return imageupload()" enctype="multipart/form-data" >
+               <form id="imageupload"    onsubmit="return imageupload()" enctype="multipart/form-data" >
                <div class="row">
 
                  <div class="col-md-5">

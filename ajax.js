@@ -29,16 +29,11 @@ function imageupload(){
 
       $.ajax({
          
-         url: lensking_processing,
-         type:'post',
-         data:{
-
-              image:image,
-              imagetitle:imagetitle     	
-
-         }
+         url: "process/process.php",
+         type:'POST',
+         data: $('#imageupload').serialize(),
          success:function(rdata){
-           
+           alert(rdata);
            if(rdata == ok){
            $.notify({
           title: "Image Upload : ",
@@ -60,10 +55,10 @@ function imageupload(){
          }
          
 
-      })
+      });
 
    }
 
-
+return false;
 
 }
