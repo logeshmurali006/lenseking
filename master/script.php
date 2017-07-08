@@ -7,6 +7,9 @@
 
  <!-- custom js -->
   <script src="process/validate.js"></script> 
+
+  <script src="ajax.js"></script> 
+
   <!-- Notify  -->
   <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
 
