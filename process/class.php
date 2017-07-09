@@ -26,36 +26,35 @@ require "dbconn.php";
    }  
   
 
-  function imageupload($imagetitle,$targetfile,$tempfile)
+  function imageupload($imagetitle,$targetfile,$tempfile,$folder)
   {
 
      global $con;
-     
-   
+       
         $temp = explode(".", $targetfile);
         $newfilename = round(microtime(true)) . '.' . end($temp);
-       if(move_uploaded_file($tempfile,$targetfile.$newfilename)){
-         
+       if(move_uploaded_file($tempfile,$folder.$newfilename)){
+   
              $sql = "INSERT INTO gallery (imagetitle,image,status) VALUES('$imagetitle','$targetfile','1')";
              
              $result = mysqli_query($con,$sql);
 
              if($result){
          
-                $output = "ok";
+                $output = "uploaded";
           
                
              }
              else{
                
-                $output = "no";        
+                $output = "Dberror";        
              }
 
          }
          else{
 
           
-         $output = "no";        
+         $output = "UploadingError";        
  
          }
 

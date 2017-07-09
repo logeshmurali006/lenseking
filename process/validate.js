@@ -80,7 +80,7 @@ var formdata = $("#loginform").serialize();
     return false;
 
 }
-
+/*
   function imageupload(){
 
      var image = $('#image').val();
@@ -113,4 +113,4 @@ var formdata = $("#loginform").serialize();
 
  return false;
 
-}
+}*/

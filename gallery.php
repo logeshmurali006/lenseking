@@ -63,7 +63,7 @@ if(isset($_SESSION['name']))
           <div class="col-md-12">
             <div class="card">
               <h3 class="card-title">Image Upload</h3>
-               <form id="imageupload"    onsubmit="return imageupload()" enctype="multipart/form-data" >
+               <form id="imageupload"    enctype="multipart/form-data" >
                <div class="row">
 
                  <div class="col-md-5">

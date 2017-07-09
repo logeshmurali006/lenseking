@@ -1,4 +1,4 @@
-
+  
 <?php
 include 'dbconn.php';
 include 'class.php';
@@ -7,23 +7,38 @@ include 'class.php';
 /***** gallery Image Upload ******/
 
 
-$folder = 'images/gallery';
+$folder = '../images/gallery/';
 
-$targetfile =  $folder.basename($_FILES['image']['name']);
+$folder2= 'images/gallery/';
+
+
+$targetfile = $folder2 . basename($_FILES["image"]["name"]);
 
 $extension = pathinfo($targetfile,PATHINFO_EXTENSION);
 
-$imagetitle = $_POST['imagetitle'];
+$imagetitle = $_POST["imagetitle"];
 
-$tempfile = $_FILES['image']['tmp_name'];
+$tempfile = $_FILES["image"]["tmp_name"];
 
-$imagesize = $_FILES['image']['size'];
+
+ $imagesize = $_FILES["image"]["size"];
 
  $uploaded = 1 ;
 
-if($extension != 'png' || $extension != 'jpg' || $extension != 'svg'){
-        
-       $uploaded = 0 ;        
+    $check = getimagesize($tempfile);
+    if($check !== false) {
+
+        $uploaded = 1;
+    } else {
+
+        $uploaded = 0;
+    }
+
+if($extension == 'png' || $extension == 'jpg' || $extension == 'svg'){
+        $uploaded = 1;
+     }
+     else{
+      $uploaded = 0 ;        
        
        ?>
        <script type="text/javascript">
@@ -60,19 +75,18 @@ if($extension != 'png' || $extension != 'jpg' || $extension != 'svg'){
    if($uploaded == 1)
    {
 
-
 		$uploadimage= new User;
-
-		$resultimageupload = $uploadimage->imageupload($imagetitle,$targetfile,$tempfile);
-
-       echo $resultimageupload;
-
+                                            
+		echo $rdata = $uploadimage->imageupload($imagetitle,$targetfile,$tempfile,$folder);
 
  }   
 
 
 
 /***** gallery Image Upload ******/
+
+
+
 
 
 ?>
