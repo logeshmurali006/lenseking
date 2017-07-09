@@ -34,8 +34,9 @@ require "dbconn.php";
         $temp = explode(".", $targetfile);
         $newfilename = round(microtime(true)) . '.' . end($temp);
        if(move_uploaded_file($tempfile,$folder.$newfilename)){
-   
-             $sql = "INSERT INTO gallery (imagetitle,image,status) VALUES('$imagetitle','$targetfile','1')";
+            
+            $newfilename = $folder.$newfilename;
+             $sql = "INSERT INTO gallery (imagetitle,image,status) VALUES('$imagetitle','$newfilename','1')";
              
              $result = mysqli_query($con,$sql);
 
