@@ -7,6 +7,7 @@ include 'class.php';
 /***** gallery Image Upload ******/
 
 
+if(isset($_FILES["image"]["name"])){
 $folder = '../images/gallery/';
 
 $folder2= 'images/gallery/';
@@ -80,11 +81,19 @@ if($extension == 'png' || $extension == 'jpg' || $extension == 'svg'){
 		echo $rdata = $uploadimage->imageupload($imagetitle,$targetfile,$tempfile,$folder,$folder2);
 
  }   
-
-
-
+}
 /***** gallery Image Upload ******/
 
+if(isset($_POST['id'])){
+
+
+ $id =  $_POST['id'];   
+
+ $deleteimage = new User;
+
+  echo $deleteimage->deleteimage($id);
+
+}
 
 
 

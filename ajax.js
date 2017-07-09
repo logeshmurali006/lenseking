@@ -15,6 +15,7 @@ $(document).ready(function (e) {
 
 
    if(imagetitle == ""){
+    $("#imagetitle").focuss();
          $.notify({
           title: "Image Upload : ",
           message: "Image Title Required..!",
@@ -24,6 +25,7 @@ $(document).ready(function (e) {
            });
    }
    else if(image == ""){
+    $("#image").focuss();
       $.notify({
           title: "Image Upload : ",
           message: "Upload Image ..!",
@@ -48,6 +50,9 @@ $(document).ready(function (e) {
         data = $.trim(data);
     
           if(data == "uploaded"){
+
+          $("#uploadformreset").click();
+
          $.notify({
           title: "Image Upload : ",
           message: data,
@@ -89,6 +94,80 @@ $(document).ready(function (e) {
 
 /********* gallery Fetch ************/
 
+function deleteimage(id){
+
+
+
+
+
+
+
+    swal( {
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+           function(isConfirm) 
+           {
+              if (isConfirm) 
+              {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+                    $.ajax(
+                    {
+                      url: lensking_processing ,
+                      type: "POST",
+                      data: {
+                        id:id
+                      },
+                      contentType: false,
+                      cache: false,
+                      processData:false,
+                      success: function(data)
+                      {   
+                        // for triming space in text
+                        data = $.trim(data);
+                      
+                          if(data == "Deleted")
+                          {
+                                 $.notify({
+
+                                  title: "Image Deleted : ",
+                                  message: data,
+                                  icon: 'fa fa-check-circle' 
+                                    },{
+                                      type: "success"
+                                   });
+                          }
+                         else
+                         {
+                                $.notify({
+
+                                title: "Image Not Deleted : ",
+                                message: data,
+                                icon: 'fa fa-exclamation-circle' 
+                                  },{
+                                    type: "danger"
+                                 });
+                        }
+                      }
+                    });
+              }
+               else {
+                      swal("Cancelled", "Your imaginary file is safe :)", "error");
+                    }
+        });
+
+return false;
+
+
+
+}
  
 
 /********* gallery Fetch ************/

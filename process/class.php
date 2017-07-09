@@ -91,7 +91,28 @@ function fetchimages(){
   return json_encode($imgarray);
 
 }
- 
+
+
+function deleteimage($id)
+{
+global $con;
+
+   $sql = "DELETE FROM gallery WHERE id='$id'";
+
+   $result = mysqli_query($con,$sql);
+  
+   if($result){
+    $output = "Deleted";
+   }
+   else{
+    $output = "NotDeleted";
+   }
+
+  return $output;
+
+} 
+
+
  }
 
 

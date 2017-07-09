@@ -61,6 +61,8 @@ if(isset($_SESSION['name']))
                  <div class="col-md-2">
                     <div class="form-group">
                        <button class="btn btn-success " type="submit" name="upload" style="padding: 10px 15px "><i class="fa fa-cloud-upload"></i> Upload </button>
+
+                       <button style="opacity: 0" type="reset" id="uploadformreset"></button>
                     </div>
                  </div>
                  
@@ -92,7 +94,7 @@ if(isset($_SESSION['name']))
                   foreach ($galleryarray as $value) {
                     
                   ?>
-                  <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['imagetitle'];?>);">
+                  
                     <tr>
                       <td><?=$counter?></td>
                       <td><?=$value['imagetitle'];?></td>
@@ -105,10 +107,12 @@ if(isset($_SESSION['name']))
                         </div>
                       </td>
                       <td>
+                      <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['id']?>)">
                          <button type="submit"  data-toggle="tooltip" title="Delete" class="btn btn-danger mybtn"><i class="fa fa-trash"></i></button>
                       </td>
+                      </form>
                     </tr>
-                  </form>
+                  
                     
                     <?php
                     $counter++;
