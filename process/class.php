@@ -26,7 +26,7 @@ require "dbconn.php";
    }  
   
 
-  function imageupload($imagetitle,$targetfile,$tempfile,$folder)
+  function imageupload($imagetitle,$targetfile,$tempfile,$folder,$folder2)
   {
 
      global $con;
@@ -35,7 +35,7 @@ require "dbconn.php";
         $newfilename = round(microtime(true)) . '.' . end($temp);
        if(move_uploaded_file($tempfile,$folder.$newfilename)){
             
-            $newfilename = $folder.$newfilename;
+            $newfilename = $folder2.$newfilename;
              $sql = "INSERT INTO gallery (imagetitle,image,status) VALUES('$imagetitle','$newfilename','1')";
              
              $result = mysqli_query($con,$sql);

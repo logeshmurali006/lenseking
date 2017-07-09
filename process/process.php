@@ -77,7 +77,7 @@ if($extension == 'png' || $extension == 'jpg' || $extension == 'svg'){
 
 		$uploadimage= new User;
                                             
-		echo $rdata = $uploadimage->imageupload($imagetitle,$targetfile,$tempfile,$folder);
+		echo $rdata = $uploadimage->imageupload($imagetitle,$targetfile,$tempfile,$folder,$folder2);
 
  }   
 
