@@ -3,6 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
     <title>Lensking</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9

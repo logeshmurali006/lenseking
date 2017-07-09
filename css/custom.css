@@ -1,0 +1,15 @@
+.toggle-flip input[type="checkbox"]+.flip-indecator:after{
+	background-color: #4caf50 !important;
+}
+.toggle-flip input[type="checkbox"]+.flip-indecator:before{
+  background-color: #F44336 !important;	
+  color: white !important;
+}
+
+.mybtn{
+ padding: 6.5px 15px !important;
+}
+
+.text-purple{
+	color:#673AB7 !important;
+}

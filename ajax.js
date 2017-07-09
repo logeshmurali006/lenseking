@@ -1,5 +1,6 @@
 var lensking_processing = "process/process.php";
 
+/*********** gallery upload ************/
 $(document).ready(function (e) {
   $("#imageupload").on('submit',(function(e) {
     e.preventDefault();
@@ -35,7 +36,7 @@ $(document).ready(function (e) {
    else{
      
          $.ajax({
-          url: "process/process.php",
+          url: lensking_processing /*"process/process.php"*/,
       type: "POST",
       data:  new FormData(this),
       contentType: false,
@@ -82,9 +83,13 @@ $(document).ready(function (e) {
 
    }
 
-
-
-
   }));
 });
+/*********** gallery upload ************/
+
+/********* gallery Fetch ************/
+
+ 
+
+/********* gallery Fetch ************/
 

@@ -12,6 +12,11 @@ if(isset($_SESSION['name']))
  
  include "master/head.php";
   $page = 'gallery'; 
+  
+  $gallery = new User;
+  $gallarray = $gallery->fetchimages();
+  
+  $galleryarray = json_decode($gallarray,true);
 
 ?>
   </head>
@@ -21,35 +26,12 @@ if(isset($_SESSION['name']))
     <?php
  
  include "master/menu.php";
-
-
-
-//if(isset($_POST['upload'])){
-
-
-//}
-/*else{
-  ?>
-       <script type="text/javascript">
-            $.notify({
-          title: "Image Upload : ",
-          message: "Error while submit",
-          icon: 'fa fa-exclamation-circle' 
-            },{
-              type: "danger"
-            });   
-       </script>
-       <?php
-       
-}
-
- */
 ?> 
  
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-image"></i> Gallery</h1>
+            <h1><i class="fa fa-image text-purple"></i> Gallery</h1>
             
           </div>
           <div>
@@ -78,7 +60,7 @@ if(isset($_SESSION['name']))
                  </div>
                  <div class="col-md-2">
                     <div class="form-group">
-                       <button class="btn btn-success" type="submit" name="upload" style="padding: 10px 15px "><i class="fa fa-cloud-upload"></i> Upload </button>
+                       <button class="btn btn-success " type="submit" name="upload" style="padding: 10px 15px "><i class="fa fa-cloud-upload"></i> Upload </button>
                     </div>
                  </div>
                  
@@ -87,6 +69,57 @@ if(isset($_SESSION['name']))
             </div>
           </div>
         </div>
+        
+        <div class="card">
+        <div class="card-body">
+        
+        <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Title</th>
+                      <th>Image</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  <?php
+                  $counter =1;
+                  foreach ($galleryarray as $value) {
+                    
+                  ?>
+                  <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['imagetitle'];?>);">
+                    <tr>
+                      <td><?=$counter?></td>
+                      <td><?=$value['imagetitle'];?></td>
+                      <td><img src="<?=$value['image'];?>" style="width:100px;"></td>
+                      <td>
+                        <div class="toggle-flip">
+                          <label>
+                            <input type="checkbox" id="imgstatus<?=$value['id'];?>" <?=($value['status'] == 1)?'checked':'';?>><span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;"></span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                         <button type="submit"  data-toggle="tooltip" title="Delete" class="btn btn-danger mybtn"><i class="fa fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  </form>
+                    
+                    <?php
+                    $counter++;
+                    }
+                    ?>
+                  </tbody>
+            </table>
+               </div>
+            <div>
+          </div>
+        <div>
       </div>
     </div>
     <?php

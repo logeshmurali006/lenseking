@@ -65,8 +65,35 @@ require "dbconn.php";
 
   }
 
+
+
+function fetchimages(){
+ 
+  global $con;
+
+   $sql = "SELECT * FROM gallery";
+
+   $result = mysqli_query($con,$sql);
+  
+   $imgarray = array();
+
+   while($row = mysqli_fetch_array($result)){
+
+     $row_array['id']= $row['id'];
+     $row_array['imagetitle']= $row['imagetitle'];
+     $row_array['image']= $row['image'];
+     $row_array['status']= $row['status'];
+    
+
+     array_push($imgarray, $row_array); 
+   }
+ 
+  return json_encode($imgarray);
+
+}
  
  }
+
 
 
 ?>
