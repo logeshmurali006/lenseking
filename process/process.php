@@ -29,6 +29,7 @@ $tempfile = $_FILES["image"]["tmp_name"];
 
  $uploaded = 1 ;
 
+
     $check = getimagesize($tempfile);
     if($check !== false) {
 
@@ -36,9 +37,21 @@ $tempfile = $_FILES["image"]["tmp_name"];
     } else {
 
         $uploaded = 0;
+
+       ?>
+       <script type="text/javascript">
+            $.notify({
+          title: "Image Upload : ",
+          message: "Please Upload Image Files",
+          icon: 'fa fa-exclamation-circle' 
+            },{
+              type: "danger"
+            });   
+       </script>
+       <?php
     }
 
-if($extension == 'png' || $extension == 'jpg' || $extension == 'svg'){
+if($extension == 'png' || $extension == 'jpg' || $extension == 'JPG' || $extension == 'PNG' ){
         $uploaded = 1;
      }
      else{

@@ -15,7 +15,7 @@ $(document).ready(function (e) {
 
 
    if(imagetitle == ""){
-    $("#imagetitle").focuss();
+    $("#imagetitle").focus();
          $.notify({
           title: "Image Upload : ",
           message: "Image Title Required..!",
@@ -25,7 +25,7 @@ $(document).ready(function (e) {
            });
    }
    else if(image == ""){
-    $("#image").focuss();
+    $("#image").focus();
       $.notify({
           title: "Image Upload : ",
           message: "Upload Image ..!",

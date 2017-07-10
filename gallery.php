@@ -43,9 +43,9 @@ if(isset($_SESSION['name']))
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card" style="margin-bottom: 8px">
               <h3 class="card-title">Image Upload</h3>
-               <form id="imageupload"    enctype="multipart/form-data" >
+               <form id="imageupload"   onsubmit="return imageupload()"  enctype="multipart/form-data" >
                <div class="row">
 
                  <div class="col-md-5">
@@ -72,7 +72,7 @@ if(isset($_SESSION['name']))
           </div>
         </div>
         
-        <div class="card">
+        <div class="card" >
         <div class="card-body">
         
         <div class="row">
@@ -102,7 +102,7 @@ if(isset($_SESSION['name']))
                       <td>
                         <div class="toggle-flip">
                           <label>
-                            <input type="checkbox" id="imgstatus<?=$value['id'];?>" <?=($value['status'] == 1)?'checked':'';?>><span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;"></span>
+                            <input type="checkbox" name="imgstatus<?=$value['id'];?>" id="imgstatus<?=$value['id'];?>" <?=($value['status'] == 1)?'checked':'';?>><span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;"></span>
                           </label>
                         </div>
                       </td>
