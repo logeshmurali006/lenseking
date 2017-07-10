@@ -4,6 +4,9 @@ include 'dbconn.php';
 include 'class.php';
 
 
+
+
+
 /***** gallery Image Upload ******/
 
 
@@ -82,18 +85,21 @@ if($extension == 'png' || $extension == 'jpg' || $extension == 'svg'){
 
  }   
 }
+
+
 /***** gallery Image Upload ******/
 
-if(isset($_POST['id'])){
 
-
- $id =  $_POST['id'];   
+if(isset($_POST['imageid'])){
+ $id =  $_POST['imageid'];   
 
  $deleteimage = new User;
 
-  echo $deleteimage->deleteimage($id);
+  echo $rdata = $deleteimage->deleteimage($id);
 
 }
+
+/***** gallery Image Upload ******/
 
 
 

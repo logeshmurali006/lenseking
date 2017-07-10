@@ -53,6 +53,8 @@ $(document).ready(function (e) {
 
           $("#uploadformreset").click();
 
+      
+
          $.notify({
           title: "Image Upload : ",
           message: data,
@@ -60,6 +62,8 @@ $(document).ready(function (e) {
             },{
               type: "success"
            });
+           //reload data without reloading page
+           setTimeout(function() { location.reload(); }, 1500);
          }
          else if(data == "Dberror"){
            $.notify({
@@ -97,7 +101,7 @@ $(document).ready(function (e) {
 function deleteimage(id){
 
 
-
+var imageid = $("#img"+id).serialize();
 
 
 
@@ -117,24 +121,23 @@ function deleteimage(id){
               if (isConfirm) 
               {
                 swal("Deleted!", "Your imaginary file has been deleted.", "success");
-
+                   
                     $.ajax(
                     {
-                      url: lensking_processing ,
+                      url: lensking_processing,
                       type: "POST",
-                      data: {
-                        id:id
-                      },
-                      contentType: false,
-                      cache: false,
-                      processData:false,
+                      data: imageid,
                       success: function(data)
                       {   
+                       
                         // for triming space in text
                         data = $.trim(data);
-                      
-                          if(data == "Deleted")
+                       
+                           if(data == "Deleted")
                           {
+                            
+                            //reload data without reloading page
+                             setTimeout(function() { location.reload(); }, 1500);
                                  $.notify({
 
                                   title: "Image Deleted : ",

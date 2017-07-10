@@ -108,6 +108,7 @@ if(isset($_SESSION['name']))
                       </td>
                       <td>
                       <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['id']?>)">
+                         <input type="hidden" name="imageid" id="imageid" value="<?=$value['id']?>">
                          <button type="submit"  data-toggle="tooltip" title="Delete" class="btn btn-danger mybtn"><i class="fa fa-trash"></i></button>
                       </td>
                       </form>
