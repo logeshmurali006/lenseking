@@ -102,7 +102,14 @@ if(isset($_SESSION['name']))
                       <td>
                         <div class="toggle-flip">
                           <label>
-                            <input type="checkbox" name="imgstatus<?=$value['id'];?>" id="imgstatus<?=$value['id'];?>" <?=($value['status'] == 1)?'checked':'';?>><span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;"></span>
+                            <input type="checkbox" 
+                            name="imgstatus<?=$value['id'];?>" 
+                            id="imgstatus<?=$value['id'];?>"
+                            onclick="statuschange(<?=$value['id']?>)"
+                             <?=($value['status'] == 1)?'checked':'';?>>
+                             <span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;">
+                               
+                             </span>
                           </label>
                         </div>
                       </td>
@@ -130,6 +137,11 @@ if(isset($_SESSION['name']))
     <?php
  include "master/script.php";
 ?>
+<script type="text/javascript">
+  
+
+
+</script>
   </body>
 </html>
 <?php

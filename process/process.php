@@ -31,59 +31,21 @@ $tempfile = $_FILES["image"]["tmp_name"];
 
 
     $check = getimagesize($tempfile);
-    if($check !== false) {
 
-        $uploaded = 1;
-    } else {
-
-        $uploaded = 0;
-
-       ?>
-       <script type="text/javascript">
-            $.notify({
-          title: "Image Upload : ",
-          message: "Please Upload Image Files",
-          icon: 'fa fa-exclamation-circle' 
-            },{
-              type: "danger"
-            });   
-       </script>
-       <?php
-    }
-
-if($extension == 'png' || $extension == 'jpg' || $extension == 'JPG' || $extension == 'PNG' ){
+if($extension == 'png' || $extension == 'jpg' || $extension == 'JPG' || $extension == 'PNG' || $check == true){
         $uploaded = 1;
      }
      else{
       $uploaded = 0 ;        
        
-       ?>
-       <script type="text/javascript">
-            $.notify({
-          title: "Image Upload : ",
-          message: "Please Upload Image only .png , .svg, .jpg",
-          icon: 'fa fa-exclamation-circle' 
-            },{
-              type: "danger"
-            });   
-       </script>
-       <?php
+       echo "extension";
      }
 
     if($imagesize > 500000){
        $uploaded = 0 ;                 
-
-       ?>
-       <script type="text/javascript">
-            $.notify({
-          title: "Image Upload : ",
-          message: "Please Upload Image Below 5mb",
-          icon: 'fa fa-exclamation-circle' 
-            },{
-              type: "danger"
-            });   
-       </script>
-       <?php
+       
+       echo "filesize";
+       
      }
 
 
@@ -115,6 +77,21 @@ if(isset($_POST['imageid'])){
 /***** gallery Image Upload ******/
 
 
+/***** gallery Image status Upload ******
+ 
+ if(isset($_POST['status'])){
 
+   $statuschange = new User;
+  
+   $imgid = $_POST['id'])
+   $imgstatus =  $_POST['status']);
+
+   $statuschange->imgstatuschange($imgid,$imgstatus);    
+
+
+
+ }
+
+**** gallery Image status Upload ******/
 
 ?>

@@ -113,6 +113,26 @@ global $con;
 } 
 
 
+function imgstatuschange($id,$value){
+  
+  global $con;
+
+   $sql = "UPDATE gallery SET status='$value' WHERE id='$id'";
+
+   $result = mysqli_query($con,$sql);
+  
+   if($result){
+    $output = "changed";
+   }
+   else{
+    $output = "unchanged";
+   }
+
+  return $output;
+
+}
+
+
  }
 
 

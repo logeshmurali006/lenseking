@@ -46,9 +46,10 @@ $(document).ready(function (e) {
       processData:false,
       success: function(data)
         {   
+
         // for triming space in text
         data = $.trim(data);
-    
+          
           if(data == "uploaded"){
 
           $("#uploadformreset").click();
@@ -83,6 +84,36 @@ $(document).ready(function (e) {
               type: "danger"
            });
          }
+
+        else if(data == "extension"){
+          $.notify({
+          title: 'Image Upload : ',
+          message: "Please Enter Image Files .png ,.jpg  Only..",
+          icon: 'fa fa-exclamation-circle' 
+            },{
+              type: 'danger'
+            }); 
+        }
+         else if(data == "filesize"){
+          $.notify({
+          title: 'Image Upload : ',
+          message: "Please Upload Image Below 5mb",
+          icon: 'fa fa-exclamation-circle' 
+            },{
+              type: 'danger'
+            }); 
+        }
+         else{
+         $.notify({
+          title: 'Image Upload : ',
+          message: data,
+          icon: 'fa fa-exclamation-circle' 
+            },{
+              type: 'warning'
+            });  
+        }
+
+        
         },
         error: function() 
         {
@@ -175,3 +206,33 @@ return false;
 
 /********* gallery Fetch ************/
 
+/********** status change gallery *********
+ function statuschange(id){
+    alert();
+var checked  =  $("#imgstatus"+id).prop('checked', true);
+
+var value =""; 
+
+if(checked){
+ value = 1;
+$("#imgstatus"+id).prop('checked', true);               
+}
+else{
+  value = 0;
+  $("#imgstatus"+id).prop('checked', false);
+}
+
+ $.ajax(
+          {
+            url: lensking_processing,
+            type: "POST",
+            data: {
+              status : value,
+              id : id
+            },
+            success: function(data)
+            {   
+              alert(data);
+            }
+ }
+********* status change gallery **********/
