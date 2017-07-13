@@ -158,6 +158,31 @@ function videoUpload($url){
 }
 
 
+function fetchYoutubeVideos(){
+  global $con;
+  $sql = "SELECT * FROM  youtubevideos";
+   
+  $result = mysqli_query($con,$sql);
+
+  $videoarray = array();
+
+  while($row = mysqli_fetch_array($result)){
+     
+     $row_array['id'] = $row['id'];
+     $row_array['youtubeurl'] = $row['youtubeurl'];
+
+  array_push($videoarray , $row_array);
+  }
+
+ return json_encode($videoarray);
+
+}
+
+
+
+
+
+
  }
 
 

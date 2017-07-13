@@ -13,10 +13,10 @@ if(isset($_SESSION['name']))
  include "master/head.php";
   $page = 'youtube'; 
   
-  $gallery = new User;
-  $gallarray = $gallery->fetchimages();
+  $videos = new User;
+  $videosarray = $videos->fetchYoutubeVideos();
   
-  $galleryarray = json_decode($gallarray,true);
+  $varray = json_decode($videosarray,true);
 
 ?>
   </head>
@@ -88,18 +88,18 @@ if(isset($_SESSION['name']))
 
                   <?php
                   $counter =1;
-                  foreach ($galleryarray as $value) {
+                  foreach ($varray as $value) {
                     
                   ?>
                   
                     <tr>
                       <td><?=$counter?></td>
                       
-                      <td><img src="<?=$value['image'];?>" style="width:100px;"></td>
+                      <td><iframe width="200" height="150" src="<?=$value['youtubeurl'];?>" frameborder="0" allowfullscreen></iframe></td>
                       
                       <td>
-                      <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['id']?>)">
-                         <input type="hidden" name="imageid" id="imageid" value="<?=$value['id']?>">
+                      <form id="vid<?=$value['id'];?>" onsubmit="return deletevideo(<?=$value['id']?>)">
+                         <input type="hidden" name="videoid" id="videoid" value="<?=$value['id']?>">
                          <button type="submit"  data-toggle="tooltip" title="Delete" class="btn btn-danger mybtn"><i class="fa fa-trash"></i></button>
                       </td>
                       </form>
