@@ -206,20 +206,44 @@ return false;
 
 /********* gallery Fetch ************/
 
-/********** status change gallery *********
- function statuschange(id){
-    alert();
+/********** status change gallery *********/
+/*function statusappend(id){
+
+var value = $("#imgstatus"+id).val();
+
+ if(value == 1){
+   $("#imgstatus"+id).attr("checked",false !important);
+
+ }
+ else{
+
+   $("#imgstatus"+id).attr("checked",true !important);
+ }
+
+
+}
+
+*/
+
+
+
+
+   function statuschange(id){
+
 var checked  =  $("#imgstatus"+id).prop('checked', true);
+
 
 var value =""; 
 
+
 if(checked){
  value = 1;
-$("#imgstatus"+id).prop('checked', true);               
+ 
+
 }
 else{
   value = 0;
-  $("#imgstatus"+id).prop('checked', false);
+  
 }
 
  $.ajax(
@@ -232,7 +256,90 @@ else{
             },
             success: function(data)
             {   
-              alert(data);
+             
+              if(data == 1){
+                $("#imgstatus"+id).prop('checked', true);
+              }
+              else if(data == 0){
+                $("#imgstatus"+id).prop('checked', false);
+              }
+              else if(data == "error"){
+                
+              }
             }
+ });
+}
+
+/********* status change gallery **********/
+
+ function videoUpload(){
+ 
+
+   var youtube = $("#youtubeurl").val();
+   var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+
+    if(youtube == ""){
+        $.notify({
+        title: "Video Upload: ",
+        message: "Please Enter Youtube Url",
+        icon: 'fa fa-exclamation-circle' 
+          },{
+            type: "danger"
+         });
+
+        $("#youtubeurl").focus();
+    }
+    else if(!youtube.match(regExp)){
+      $.notify({
+        title: "Video Upload: ",
+        message: "Please Enter Valid Youtube Url",
+        icon: 'fa fa-exclamation-circle' 
+          },{
+            type: "danger"
+         });
+      $("#youtubeurl").focus();
+    }
+    else{
+      $.ajax({
+        type:'post',
+        url:lensking_processing,
+        data:{
+          youtubeurl : youtube},
+        success:function(rdata){
+           rdata = $.trim(rdata);
+           alert(rdata);
+          if(rdata == "success"){
+            
+            $("#uploadformreset").click();
+
+            $.notify({
+            title: "Video Upload: ",
+            message: "Video Uploaded Successfully",
+            icon: 'fa fa-check' 
+              },{
+                type: "success"
+             });       
+          }
+          else{
+            $.notify({
+            title: "Video Upload: ",
+            message: "Video is Not Upload"+rdata+"",
+            icon: 'fa fa-exclamation-circle' 
+              },{
+                type: "danger"
+             });
+          }
+        }
+      });
+
+
+    }
+
+      return false;
+
  }
-********* status change gallery **********/
+
+/***********  youtube video upload **********/
+
+
+/***********  youtube video upload **********/ 

@@ -120,15 +120,40 @@ function imgstatuschange($id,$value){
    $sql = "UPDATE gallery SET status='$value' WHERE id='$id'";
 
    $result = mysqli_query($con,$sql);
-  
+   $sql2 = "SELECT status FROM  gallery  WHERE id='$id'";
+   
+   $fetchresult = mysqli_query($con,$sql2);    
+
    if($result){
-    $output = "changed";
+
+    if($row = mysqli_fetch_assoc($fetchresult)){
+
+     $output = $row['status'];
+
+    }
+
    }
    else{
-    $output = "unchanged";
+    $output = "error";
    }
 
   return $output;
+
+}
+
+
+function videoUpload($url){
+  global $con;
+  $sql = "INSERT INTO  youtubevideos  (youtubeurl) VALUES ('$url')";
+   
+  $result = mysqli_query($con,$sql);
+
+  if($result){
+    echo "success";
+  }
+ else{
+   echo "dberror";
+ }
 
 }
 

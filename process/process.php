@@ -77,21 +77,33 @@ if(isset($_POST['imageid'])){
 /***** gallery Image Upload ******/
 
 
-/***** gallery Image status Upload ******
+/***** gallery Image status Upload ******/
  
  if(isset($_POST['status'])){
 
    $statuschange = new User;
   
-   $imgid = $_POST['id'])
-   $imgstatus =  $_POST['status']);
+   $imgid = $_POST['id'];
+   $imgstatus =  $_POST['status'];
 
-   $statuschange->imgstatuschange($imgid,$imgstatus);    
+   echo $status = $statuschange->imgstatuschange($imgid,$imgstatus);    
 
 
 
  }
 
-**** gallery Image status Upload ******/
+/**** gallery Image status Upload ******/
+
+/**** youtube Video Upload ******/
+ if(isset($_POST['youtubeurl'])){
+
+   $uploadvideo = new User;
+  
+   $youtubeurl =  $_POST['youtubeurl'];
+
+   echo $status = $uploadvideo->videoUpload($youtubeurl);    
+
+ }
+/**** youtube Video Upload ******/
 
 ?>

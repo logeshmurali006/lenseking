@@ -11,7 +11,7 @@ if(isset($_SESSION['name']))
 <?php
  
  include "master/head.php";
-  $page = 'gallery'; 
+  $page = 'youtube'; 
   
   $gallery = new User;
   $gallarray = $gallery->fetchimages();
@@ -31,31 +31,30 @@ if(isset($_SESSION['name']))
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-image text-purple"></i> Gallery</h1>
+            <h1><i class="fa fa-youtube text-purple"></i> Youtube Videos</h1>
             
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Gallery</a></li>
+              <li><a href="#">Videos</a></li>
+              <li>Youtube Videos</li>
             </ul>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="card" style="margin-bottom: 8px">
-              <h3 class="card-title">Image Upload</h3>
-               <form id="imageupload"   onsubmit="return imageupload()"  enctype="multipart/form-data" >
+            <div class="card" style="margin-bottom: 8px;padding-bottom:0px;">
+              
+               <form id="videoupload"   onsubmit="return videoUpload()"  >
                <div class="row">
 
-                 <div class="col-md-5">
-                    <div class="form-group">
-                       <input type="text" name="imagetitle" id="imagetitle" class="form-control" placeholder="Enter Image Title">
-                    </div>
+                 <div class="col-md-4">
+                    <h3 style="margin-top: 8px;">Youtube Video Upload</h3>
                  </div>
                  <div class="col-md-5">
                     <div class="form-group">
-                       <input type="file" class="form-control" name="image" id="image" style="padding: 7.5px 8px ">
+                       <input type="text" class="form-control" name="youtubeurl" id="youtubeurl" placeholder="Enter Youtube Video Url">
                     </div>
                  </div>
                  <div class="col-md-2">
@@ -81,9 +80,7 @@ if(isset($_SESSION['name']))
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Title</th>
-                      <th>Image</th>
-                      <th>Status</th>
+                      <th>Video</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -97,28 +94,9 @@ if(isset($_SESSION['name']))
                   
                     <tr>
                       <td><?=$counter?></td>
-                      <td><?=$value['imagetitle'];?></td>
+                      
                       <td><img src="<?=$value['image'];?>" style="width:100px;"></td>
-                      <td>
-                        <div class="toggle-flip">
-                          <label>
-                            <input type="checkbox" 
-                            name="imgstatus<?=$value['id'];?>" 
-                            id="imgstatus<?=$value['id'];?>"
-                            onchange="statuschange(<?=$value['id']?>)"
-                             value="<?=$value['status'];?>" 
-                              <?=($value['status'] == 1)?"checked='true'":"";?>
-                                     
-                             > 
-                    
-                             <span class="flip-indecator" data-toggle-on="Click to Ban" data-toggle-off="Click to active" style="width:105px;">
-                               
-                             </span>
-                          </label>
-                        </div>
-
-                       
-                      </td>
+                      
                       <td>
                       <form id="img<?=$value['id'];?>" onsubmit="return deleteimage(<?=$value['id']?>)">
                          <input type="hidden" name="imageid" id="imageid" value="<?=$value['id']?>">

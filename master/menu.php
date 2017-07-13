@@ -63,15 +63,10 @@ $data = json_decode($lensking,true);
           <ul class="sidebar-menu">
             <li <?=($page == 'dashboard')?"class='active'":""?>><a href="dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
             <li <?=($page == 'gallery')?"class='active'":""?>><a href="gallery"><i class="fa fa-image"></i> <span>Gallery</span></a></li>
-            <!--<li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>UI Elements</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="bootstrap-components.html"><i class="fa fa-circle-o"></i> Bootstrap Elements</a></li>
-                <li><a href="ui-font-awesome.html"><i class="fa fa-circle-o"></i> Font Icons</a></li>
-                <li><a href="ui-cards.html"><i class="fa fa-circle-o"></i> Cards</a></li>
-                <li><a href="widgets.html"><i class="fa fa-circle-o"></i> Widgets</a></li>
-              </ul>
-            </li>
-            <li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
+
+            <li <?=($page == 'youtube')?"class='active'":""?>><a href="youtube"><i class="fa fa-youtube"></i> Youtube Videos</a></li>
+           
+            <!--<li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
             <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="form-components.html"><i class="fa fa-circle-o"></i> Form Components</a></li>
