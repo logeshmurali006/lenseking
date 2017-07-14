@@ -106,4 +106,17 @@ if(isset($_POST['imageid'])){
  }
 /**** youtube Video Upload ******/
 
+/**** youtube Video Delete ******/
+if(isset($_POST['videodelete'])){
+
+   $deletevideo = new User;
+  
+   $videoid =  $_POST['videodelete'];
+
+   echo $deletestatus = $deletevideo->videoDelete($videoid);    
+
+ }
+/**** youtube Video Delete ******/
+
+
 ?>

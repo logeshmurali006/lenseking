@@ -272,6 +272,8 @@ else{
 
 /********* status change gallery **********/
 
+/***********  youtube video upload **********/
+
  function videoUpload(){
  
 
@@ -307,7 +309,7 @@ else{
           youtubeurl : youtube},
         success:function(rdata){
            rdata = $.trim(rdata);
-           alert(rdata);
+           
           if(rdata == "success"){
             
             $("#uploadformreset").click();
@@ -319,6 +321,10 @@ else{
               },{
                 type: "success"
              });       
+
+           //reload data without reloading page
+           setTimeout(function() { location.reload(); }, 1500);
+                       
           }
           else{
             $.notify({
@@ -339,7 +345,70 @@ else{
 
  }
 
-/***********  youtube video upload **********/
-
-
 /***********  youtube video upload **********/ 
+
+/********** youtube video delete ***********/
+function deletevideo(id){
+  
+  var videoid = $("#videoid").val();
+  
+
+    swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+           function(isConfirm) 
+           {
+              if (isConfirm) 
+              {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                   
+                         $.ajax({
+                            type:'post',
+                            url: lensking_processing,
+                            data: {
+                              videodelete : videoid
+                            },
+                            success:function(rdata){
+                              // for triming space in text
+                              rdata = $.trim(rdata);
+          
+                              if(rdata == "success")
+                              {
+
+                                 $.notify({
+                                  title: "Video Upload: ",
+                                  message: "Video Deleted Successfully",
+                                  icon: 'fa fa-check' 
+                                    },{
+                                      type: "success"
+                                   });
+
+                                  //reload data without reloading page
+                                  setTimeout(function() { location.reload(); }, 1500);
+                              }
+                              else
+                              {
+                                 $.notify({
+                                  title: "Video Upload: ",
+                                  message: "Video is Not Deleted"+rdata+"",
+                                  icon: 'fa fa-exclamation-circle' 
+                                    },{
+                                      type: "danger"
+                                   });
+                                } 
+                              }
+
+                         });
+                }
+                
+            })
+    return false;
+  }
+/********** youtube video delete ***********/

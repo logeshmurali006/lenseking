@@ -149,12 +149,12 @@ function videoUpload($url){
   $result = mysqli_query($con,$sql);
 
   if($result){
-    echo "success";
+    $output = "success";
   }
  else{
-   echo "dberror";
+   $output =  "dberror";
  }
-
+return $output;
 }
 
 
@@ -179,7 +179,21 @@ function fetchYoutubeVideos(){
 }
 
 
+function videoDelete($id){
+  
+  global $con;
 
+  $sql = "DELETE FROM youtubevideos WHERE id='$id'";
+
+  $result = mysqli_query($con,$sql);
+  if($result){
+    $output = "success";
+  }
+  else{
+    $output = "dberror";
+  }
+ return $output;
+}
 
 
 
