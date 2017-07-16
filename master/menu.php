@@ -6,7 +6,7 @@
 <?php
  
  $data = new User;
-
+ 
 $lensking = $data->userData();
 
 $data = json_decode($lensking,true); 
@@ -65,7 +65,9 @@ $data = json_decode($lensking,true);
             <li <?=($page == 'gallery')?"class='active'":""?>><a href="gallery"><i class="fa fa-image"></i> <span>Gallery</span></a></li>
 
             <li <?=($page == 'youtube')?"class='active'":""?>><a href="youtube"><i class="fa fa-youtube"></i> Youtube Videos</a></li>
-           
+            
+           <li <?=($page == 'youtube')?"class='active'":""?>><a href="contactus"><i class="fa fa-phone"></i> Contact Us</a></li>
+         
             <!--<li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
             <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">

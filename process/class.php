@@ -196,6 +196,30 @@ function videoDelete($id){
 }
 
 
+function fetchContactUs(){
+
+global $con;
+$sql = "SELECT * FROM contactus";
+
+$result = mysqli_query($con,$sql);
+$contactarr = array();
+while($row = mysqli_fetch_array($result))
+{
+  $row_array['id'] = $row['id'];
+  $row_array['name'] = $row['name'];
+  $row_array['email'] = $row['email'];
+  $row_array['phone'] = $row['phone'];
+  $row_array['message'] = $row['message'];
+
+
+  array_push($contactarr, $row_array);
+
+}
+
+  return json_encode($contactarr);
+
+}
+
 
  }
 
